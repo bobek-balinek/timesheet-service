@@ -8,6 +8,16 @@ var findJob = function(number){
 	});
 };
 
+var findJobIntex = function(number){
+	var job_index;
+
+	_.find(jobs, function(item, index){
+		job_index = index;
+	});
+
+	return job_index;
+};
+
 var addJob = function(number, hours, description){
 	var data = {
 		"date": new Date(),
@@ -18,6 +28,15 @@ var addJob = function(number, hours, description){
 
 	if(!findJob(number)){
 		jobs.push(data);
+
+		return true;
+	}else{
+		var index = findJobIntex(number);
+
+		jobs[index].job_number = number;
+		jobs[index].hours = hours;
+		jobs[index].description = description;
+
 		return true;
 	}
 
