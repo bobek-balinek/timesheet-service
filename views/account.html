@@ -1,6 +1,7 @@
 <h1>Today's list</h1>
 
-<form action="/account" method="POST">
+<form action="/account?date={{date}}" method="POST">
+	<input type="hidden" name="date" value="{{date}}">
 	<table class="jobs">
 		<thead>
 			<tr>
@@ -22,9 +23,9 @@
 		<tbody>
 			{{#jobs}}
 			<tr>
-				<td><input class="job-number-field" type="text" name="job_number[]" value="{{job_number}}" placeholder=""></td>
-				<td><input class="job-hours-field" type="text" name="hours[]" value="{{hours}}" placeholder=""></td>
-				<td><input class="job-description-field" type="text" name="description[]" value="{{description}}" placeholder=""></td>
+				<td>{{job_number}}</td>
+				<td>{{hours}}</td>
+				<td>{{description}}</td>
 			</tr>
 			{{/jobs}}
 			<tr>
