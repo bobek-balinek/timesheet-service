@@ -1,0 +1,38 @@
+<h1>Today's list</h1>
+
+<form action="/account" method="POST">
+	<table class="jobs">
+		<thead>
+			<tr>
+				<th>Job number</th>
+				<th>Hours</th>
+				<th>Description</th>
+			</tr>
+		</thead>
+
+		<tfoot>
+			<tr>
+				<td colspan="3"><a class="add-more" href="#">Add more</a></td>
+			</tr>
+			<tr>
+				<td colspan="3"><input type="submit" name="submit" value="Update"></td>
+			</tr>
+		</tfoot>
+
+		<tbody>
+			{{#jobs}}
+			<tr>
+				<td><input class="job-number-field" type="text" name="job_number[]" value="{{job_number}}" placeholder=""></td>
+				<td><input class="job-hours-field" type="text" name="hours[]" value="{{hours}}" placeholder=""></td>
+				<td><input class="job-description-field" type="text" name="description[]" value="{{description}}" placeholder=""></td>
+			</tr>
+			{{/jobs}}
+			<tr>
+				<td><input class="job-number-field" type="text" name="job_number[]" value="" placeholder=""></td>
+				<td><input class="job-hours-field" type="text" name="hours[]" value="" placeholder=""></td>
+				<td><input class="job-description-field" type="text" name="description[]" value="" placeholder=""></td>
+			</tr>
+		</tbody>
+	</table>
+
+</form>

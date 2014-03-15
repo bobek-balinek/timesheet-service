@@ -1,4 +1,5 @@
 var jobs = require('../lib/jobs');
+
 /* GET users listing. */
 exports.list = function(req, res){
 	var collection = jobs.listAll();
