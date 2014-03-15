@@ -1,0 +1,35 @@
+{
+	"name": "Fantasy IT",
+	"company_number": "SD20033F",
+	"employees": [{
+		"name": "Jon Doe",
+		"number": 1,
+		"department": "Creative",
+		"address_line1": "10 Shaftsbury Avenue",
+		"address_line1": "Intake, Doncaster",
+		"address_line1": "South Yorkshire",
+		"postcode": "DN2 6DT",
+		"timesheets": [{
+			"date": "02-01-2014",
+			"job_number": "873000",
+			"description": "...",
+			"hours": 12.2
+		}],
+		"payslips": []
+	}],
+	"jobs": [{
+		"job_number": 1,
+		"client_name": "ASDA",
+		"assignee": 1,
+		"hours": 2,
+		"description": "Design amends to the marketing email for Wine products"
+	},
+	{
+		"job_number": 2,
+		"client_name": "ASDA",
+		"assignee": 2,
+		"hours": 2,
+		"description": "Design amends to the marketing email for Pastry products"
+	}]
+}
+

@@ -28,6 +28,7 @@ app.use(app.router);
 
 app.get('/', routes.index);
 app.get('/users', users.list);
+app.get('/users/:id', users.find);
 
 /// catch 404 and forwarding to error handler
 app.use(function(req, res, next) {
