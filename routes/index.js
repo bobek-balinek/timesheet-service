@@ -1,31 +1,37 @@
 var _ = require('underscore');
 var moment = require('moment');
 var sampleData = require('../lib/data.json');
-
-jobs = sampleData.employees[0].timesheets;
+var db = require('../lib/storage');
+var async = require('async');
 
 /**
  * Fetch jobs from the database, if date given, filter by 'dd-mm-yyyy'
  */
-var getJobs = function(date){
-	console.log(jobs);
+var getJobs = function(date, callback){
+	return db.get('jobs', function(res){
+		var results = res;
 
-	if(date){
-		return _.filter(jobs, function(item, index){
-			return item.date === date;
-		});
-	}
+		if(date){
+			results = _.filter(results, function(item, index){
+				return item.date === date;
+			});
+		}
 
-	return jobs;
+		callback(results);
+	});
 };
 
 /**
  * Find a job object by its job number
  */
-var findJob = function(number, date){
-	return _.find(jobs, function(item, index){
-		return (item.job_number === number) && (item.date == date);
-	});
+var findJob = function(number, date, callback){
+	getJobs(date, function(obj){
+		var results = _.find(obj, function(item, index){
+			return (item.job_number === number) && (item.date == date);
+		});
+
+		callback(results);
+	})
 };
 
 /**
@@ -50,61 +56,74 @@ var findJobIntex = function(number, date){
 /**
  * Add a new job entry to an array of today's timesheet
  */
-var addJob = function(number, date, hours, description){
+var addJob = function(number, date, hours, description, callback){
 	var data = {
 		"date": date,
+		"assignee": 1,
 		"job_number": number,
 		"description": description,
 		"hours": parseFloat(hours)
 	};
 
-	console.log(findJob(number, date));
+	// if(!findJob(number, date)){
+	return db.insert('jobs', data, function(){
+		callback(data);
+	});
 
-	if(!findJob(number, date)){
-		jobs.push(data);
+	// }else{
+	// 	var index = findJobIntex(number, date);
 
-		return true;
-	}else{
-		var index = findJobIntex(number);
+	// 	jobs[index].date = date;
+	// 	jobs[index].job_number = number;
+	// 	jobs[index].hours = hours;
+	// 	jobs[index].description = description;
 
-		jobs[index].date = date;
-		jobs[index].job_number = number;
-		jobs[index].hours = hours;
-		jobs[index].description = description;
-
-		return true;
-	}
-
-	return false;
+	// 	return true;
+	// }
+	// return false;
 };
 
 /* GET home page. */
 exports.index = function(req, res){
-  res.render('index', { title: 'Timesheets' });
+  res.render('index', {});
 };
 
 exports.account = function(req, res){
-	var today = moment().format("DD-MM-YYYY");
+	var today = moment().format("YYYY-MM-DD");
 
-	if( moment(req.query.date).isValid() ){
+	if( req.query.date != undefined && moment(req.query.date, 'YYYY-MM-DD').isValid() ){
 		today = req.query.date;
 	}
 
-  res.render('account', { title: 'Today\'s list', jobs: getJobs(today), date: today });
+	getJobs(today, function(results){
+	  res.render('account', { jobs: results, date: today });
+	});
 };
 
 exports.updateAccount = function(req, res){
-	var today = moment().format("DD-MM-YYYY");
-	console.log(req.body);
+	var today = moment().format("YYYY-MM-DD");
 
-	if(req.body.date){
+	if( req.body.date != undefined && moment(req.body.date, 'YYYY-MM-DD').isValid() ){
 		today = req.body.date;
 	}
 
+	var jobs = [];
+
 	_.each(req.body.job_number, function(item, index){
-		addJob( req.body.job_number[index], today, req.body.hours[index], req.body.description[index] );
+		jobs.push({
+			job_number: req.body.job_number[index],
+			date: today,
+			hours: req.body.hours[index],
+			description: req.body.description[index]
+		});
 	});
 
-  res.render('account', { title: 'Today\'s list', jobs: getJobs(today), date: today });
-};
+	async.each(jobs, function(item, callback){
+		addJob( item.job_number, item.date, item.hours, item.description , callback);
+	}, function(err){
 
+		getJobs(today, function(results){
+		  res.render('account', { jobs: results, date: today });
+		});
+	});
+};

@@ -8,7 +8,7 @@ var bodyParser = require('body-parser');
 var mustachex = require('mustachex');
 
 var routes = require('./routes');
-var users = require('./routes/user');
+var payslips = require('./routes/payslips');
 
 var app = express();
 
@@ -31,8 +31,8 @@ app.get('/', routes.index);
 app.get('/account', routes.account);
 app.post('/account', routes.updateAccount);
 
-app.get('/users', users.list);
-app.get('/users/:id', users.find);
+// app.get('/payslips', payslips.index);
+app.get('/payslips/view/:employee_id/:date', payslips.index); // View particular payslip
 
 /// catch 404 and forwarding to error handler
 app.use(function(req, res, next) {

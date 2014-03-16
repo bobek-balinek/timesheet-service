@@ -1,37 +1,124 @@
 {
-	"name": "Fantasy IT",
-	"company_number": "SD20033F",
-	"employees": [{
-		"name": "Jon Doe",
-		"number": 1,
-		"department": "Creative",
-		"address_line1": "10 Shaftsbury Avenue",
-		"address_line2": "Intake, Doncaster",
-		"address_line3": "South Yorkshire",
-		"postcode": "DN2 6DT",
-		"timesheets": [{
-			"date": "02-01-2014",
-			"job_number": "873000",
-			"description": "...",
-			"hours": 12.2
-		}],
-		"payslips": []
-	}],
-	"jobs": [{
-		"job_number": 1,
-		"client_name": "ASDA",
-		"assignee": 1,
-		"hours": 2,
-		"status": "ready",
-		"description": "Design amends to the marketing email for Wine products"
-	},
-	{
-		"job_number": 2,
-		"client_name": "ASDA",
-		"assignee": 2,
-		"hours": 2,
-		"status": "ready",
-		"description": "Design amends to the marketing email for Pastry products"
-	}]
+  "name": "Fantasy IT",
+  "company_number": "SD20033F",
+  "employees": [
+    {
+      "name": "Jon Doe",
+      "number": 1,
+      "department": "Creative",
+      "address_line1": "10 Shaftsbury Avenue",
+      "address_line2": "Intake, Doncaster",
+      "address_line3": "South Yorkshire",
+      "postcode": "DN2 6DT",
+      "timesheets": [
+        {
+          "date": "02-01-2014",
+          "job_number": "873000",
+          "description": "...",
+          "hours": 12.2
+        }
+      ],
+      "payslips": []
+    }
+  ],
+  "jobs": [
+    {
+      "date": "2014-03-18",
+      "job_number": 1,
+      "client_name": "ASDA",
+      "assignee": 1,
+      "hours": 2.8,
+      "status": "ready",
+      "description": "Design amends to the marketing email for Wine products"
+    },
+    {
+      "date": "2014-03-18",
+      "job_number": 2,
+      "client_name": "ASDA",
+      "assignee": 1,
+      "hours": 2.7,
+      "status": "ready",
+      "description": "Design amends to the marketing email for Pastry products"
+    },
+    {
+      "date": "16-03-2014",
+      "job_number": "873000",
+      "description": "ASDA",
+      "hours": 1
+    },
+    {
+      "date": "16-03-2014",
+      "job_number": "873000",
+      "description": "ASDA",
+      "hours": 1
+    },
+    {
+      "date": "16-03-2014",
+      "job_number": "873000",
+      "description": "BOB",
+      "hours": 2
+    },
+    {
+      "date": "2014-03-16",
+      "job_number": "873000",
+      "description": "BOB",
+      "hours": 2
+    },
+    {
+      "date": "2014-03-16",
+      "assignee": 1,
+      "job_number": "873000",
+      "description": "BOB",
+      "hours": 7.5
+    },
+    {
+      "date": "2014-03-16",
+      "assignee": 1,
+      "job_number": "34",
+      "description": "ASDA",
+      "hours": 5
+    },
+    {
+      "date": "2014-03-16",
+      "assignee": 1,
+      "job_number": "5678",
+      "description": "SWINTON MUTHA",
+      "hours": 12
+    },
+    {
+      "date": "2014-03-16",
+      "assignee": 1,
+      "job_number": "5678",
+      "description": "SWINTON MUTHA",
+      "hours": 12
+    },
+    {
+      "date": "2014-03-16",
+      "assignee": 1,
+      "job_number": "873000",
+      "description": "NON",
+      "hours": 12
+    },
+    {
+      "date": "2014-03-16",
+      "assignee": 1,
+      "job_number": "873000",
+      "description": "NONON",
+      "hours": 12
+    },
+    {
+      "date": "2014-03-16",
+      "assignee": 1,
+      "job_number": "873000",
+      "description": "23234",
+      "hours": 6
+    },
+    {
+      "date": "2014-03-16",
+      "assignee": 1,
+      "job_number": "12",
+      "description": "2342342",
+      "hours": 23423
+    }
+  ]
 }
-
