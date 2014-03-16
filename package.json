@@ -17,6 +17,7 @@
     "underscore": "~1.6.0",
     "moment": "~2.5.1",
     "jsonfile": "~1.1.1",
-    "async": "~0.2.10"
+    "async": "~0.2.10",
+    "scookie": "0.0.3"
   }
 }

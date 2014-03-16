@@ -1,29 +1,11 @@
-{{^employee_id}}
-<h1>View payslips</h1>
-{{/employee_id}}
+<h1>Payslip</h1>
 
-{{#employee_id}}
-<h1>Payslips for employee no. {{employee_id}}</h1>
-{{/employee_id}}
+<h4>{{user.name}}</h4>
+{{user.address_line1}} <br>
+{{user.address_line2}} <br>
+{{user.address_line3}} <br>
+{{user.postcode}} <br>
 
-<form action="/payslips?date={{date}}" method="GET">
-	<input type="hidden" name="date" value="{{date}}">
 
-	Enter employee number:
-	<input type="text" name="id" value="{{employee_id}}">
 
-	<input type="submit" value="View">
-</form>
-
-{{#payslips}}
-<h2>Timesheets</h2>
-<ol>
-	{{#payslips}}
-		<li><a href="/payslips/view/{{id}}">{{date_string}}</a></li>
-	{{/payslips}}
-	<li><a href="/payslips/view/9">December 2013</a></li>
-	<li><a href="/payslips/view/10">January 2014</a></li>
-	<li><a href="/payslips/view/11">February 2014</a></li>
-	<li><a href="/payslips/view/12">March 2014</a></li>
-</ol>
-{{/payslips}}
+{{string}}

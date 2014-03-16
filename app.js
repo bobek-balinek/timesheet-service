@@ -6,8 +6,10 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var mustachex = require('mustachex');
+var scookie = require('scookie');
 
-var routes = require('./routes');
+var main = require('./routes/index');
+var account = require('./routes/account');
 var payslips = require('./routes/payslips');
 
 var app = express();
@@ -26,10 +28,12 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(app.router);
 
-app.get('/', routes.index);
+app.get('/', main.index);
+app.get('/login', main.login);
+app.post('/login', main.login);
 
-app.get('/account', routes.account);
-app.post('/account', routes.updateAccount);
+app.get('/account',scookie.middleware.mustBeLoggedIn,  account.index);
+app.post('/account', scookie.middleware.mustBeLoggedIn, account.update);
 
 // app.get('/payslips', payslips.index);
 app.get('/payslips/view/:employee_id/:date', payslips.index); // View particular payslip

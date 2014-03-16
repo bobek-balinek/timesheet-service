@@ -10,15 +10,10 @@
       "address_line2": "Intake, Doncaster",
       "address_line3": "South Yorkshire",
       "postcode": "DN2 6DT",
-      "timesheets": [
-        {
-          "date": "02-01-2014",
-          "job_number": "873000",
-          "description": "...",
-          "hours": 12.2
-        }
-      ],
-      "payslips": []
+      "hourly_rate": 12.75,
+      "national_insurance": "SH-23-23-23",
+      "tax_code": "TX-01",
+      "tax_rate": 0.15
     }
   ],
   "jobs": [
@@ -51,39 +46,6 @@
       "job_number": "873000",
       "description": "ASDA",
       "hours": 1
-    },
-    {
-      "date": "16-03-2014",
-      "job_number": "873000",
-      "description": "BOB",
-      "hours": 2
-    },
-    {
-      "date": "2014-03-16",
-      "job_number": "873000",
-      "description": "BOB",
-      "hours": 2
-    },
-    {
-      "date": "2014-03-16",
-      "assignee": 1,
-      "job_number": "873000",
-      "description": "BOB",
-      "hours": 7.5
-    },
-    {
-      "date": "2014-03-16",
-      "assignee": 1,
-      "job_number": "34",
-      "description": "ASDA",
-      "hours": 5
-    },
-    {
-      "date": "2014-03-16",
-      "assignee": 1,
-      "job_number": "5678",
-      "description": "SWINTON MUTHA",
-      "hours": 12
     },
     {
       "date": "2014-03-16",
@@ -119,6 +81,20 @@
       "job_number": "12",
       "description": "2342342",
       "hours": 23423
+    },
+    {
+      "date": "2014-03-16",
+      "assignee": 1,
+      "job_number": "34",
+      "description": "ojafsd",
+      "hours": 2
+    },
+    {
+      "date": "2014-03-16",
+      "assignee": 1,
+      "job_number": "12",
+      "description": "NON",
+      "hours": 7.5
     }
   ]
 }

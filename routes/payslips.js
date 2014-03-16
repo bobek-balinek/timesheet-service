@@ -55,18 +55,12 @@ var getUserJobs = function(employee_id, date_from, date_to, callback){
  * Sample: full_name, address, postcode, tax code, tax rate, department,
  */
 var getUserData = function(employee_id, callback){
-	return callback({
-		name: "Jon Doe",
-		number: 1,
-		department: "Creative",
-		address_line1: "10 Shaftsbury Avenue",
-		address_line2: "Intake, Doncaster",
-		address_line3: "South Yorkshire",
-		postcode: "DN2 6DT",
-		hourly_rate: 12.75,
-		national_insurance: "SH-23-23-23",
-		tax_code: "TX-01",
-		tax_rate: 0.15
+	return db.get('employees', function(obj){
+		var results = _.find(obj, function(item, index){
+			return item.number === employee_id;
+		});
+
+		return callback(results);
 	});
 };
 
@@ -98,14 +92,17 @@ exports.index = function(req, res){
 	var employee_id, date_from, date_to;
 
 	if( req.params.employee_id && req.params.date ){
+
 		date_from = new moment(req.params.date, 'MM-YYYY').startOf('month');
 		date_to = new moment(req.params.date, 'MM-YYYY').endOf('month');
 		employee_id = parseInt(req.params.employee_id);
 
 		generate(employee_id, date_from.format('YYYY-MM-DD'), date_to.format("YYYY-MM-DD") , function(payslip){
-		  res.send(payslip);
+		  // res.send(payslip);
+		  res.render('payslips', {user: payslip, string: JSON.stringify(payslip)});
 		});
-	}
 
-  // res.render('payslips', { date: today, employee_id: req.query.id, payslips: [generate(1)] });
+	}else{
+		res.redirect('/');
+	}
 };
