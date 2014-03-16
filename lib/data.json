@@ -10,132 +10,39 @@
       "address_line2": "Intake, Doncaster",
       "address_line3": "South Yorkshire",
       "postcode": "DN2 6DT",
-      "hourly_rate": 12.75,
+      "hourly_rate": 7.75,
       "national_insurance": "SH-23-23-23",
       "tax_code": "TX-01",
       "tax_rate": 0.15
+    },
+    {
+      "name": "Jane Doe",
+      "number": 2,
+      "department": "Creative",
+      "address_line1": "2 Littleton Road",
+      "address_line2": "Salford",
+      "address_line3": "Lancashire",
+      "postcode": "M7 3TJ",
+      "hourly_rate": 12.67,
+      "national_insurance": "SH-12-12-12",
+      "tax_code": "TX-01",
+      "tax_rate": 0.19
     }
   ],
   "jobs": [
     {
-      "date": "2014-03-18",
-      "job_number": 1,
-      "client_name": "ASDA",
+      "date": "2014-03-16",
       "assignee": 1,
-      "hours": 2.8,
-      "status": "ready",
-      "description": "Design amends to the marketing email for Wine products"
-    },
-    {
-      "date": "2014-03-18",
-      "job_number": 2,
-      "client_name": "ASDA",
-      "assignee": 1,
-      "hours": 2.7,
-      "status": "ready",
-      "description": "Design amends to the marketing email for Pastry products"
-    },
-    {
-      "date": "16-03-2014",
       "job_number": "873000",
       "description": "ASDA",
-      "hours": 1
-    },
-    {
-      "date": "16-03-2014",
-      "job_number": "873000",
-      "description": "ASDA",
-      "hours": 1
-    },
-    {
-      "date": "2014-03-16",
-      "assignee": 1,
-      "job_number": "5678",
-      "description": "SWINTON MUTHA",
-      "hours": 12
-    },
-    {
-      "date": "2014-03-16",
-      "assignee": 1,
-      "job_number": "873000",
-      "description": "NON",
-      "hours": 12
-    },
-    {
-      "date": "2014-03-16",
-      "assignee": 1,
-      "job_number": "873000",
-      "description": "NONON",
-      "hours": 12
-    },
-    {
-      "date": "2014-03-16",
-      "assignee": 1,
-      "job_number": "873000",
-      "description": "23234",
-      "hours": 6
-    },
-    {
-      "date": "2014-03-16",
-      "assignee": 1,
-      "job_number": "12",
-      "description": "2342342",
-      "hours": 23423
-    },
-    {
-      "date": "2014-03-16",
-      "assignee": 1,
-      "job_number": "34",
-      "description": "ojafsd",
-      "hours": 2
-    },
-    {
-      "date": "2014-03-16",
-      "assignee": 1,
-      "job_number": "12",
-      "description": "NON",
       "hours": 7.5
-    },
-    {
-      "date": "2014-03-16",
-      "assignee": 1,
-      "job_number": "873000",
-      "description": "Bob",
-      "hours": 7.3
-    },
-    {
-      "date": "2014-03-16",
-      "assignee": 1,
-      "job_number": "873000",
-      "description": "Bob",
-      "hours": 7.3
-    },
-    {
-      "date": "873000",
-      "assignee": 1,
-      "job_number": 1,
-      "description": "23",
-      "hours": 2014
-    },
-    {
-      "date": "2014-03-16",
-      "assignee": 1,
-      "description": "mon",
-      "hours": 3
-    },
-    {
-      "date": "2014-03-16",
-      "assignee": 1,
-      "job_number": "34",
-      "description": "nom",
-      "hours": 9
     },
     {
       "date": "2014-03-16",
       "assignee": 2,
       "job_number": "873000",
-      "description": "mon",
-      "hours": 12
+      "description": "ASDA",
+      "hours": 7.5
     }
   ]
 }

@@ -66,9 +66,13 @@ var addJob = function(assignee_id, data, callback){
 		"hours": parseFloat(data.hours)
 	};
 
-	return db.insert('jobs', data, function(){
-		callback(data);
-	});
+	if(data.job_number && data.assignee && data.date && data.hours){
+		return db.insert('jobs', data, function(){
+			callback(data);
+		});
+	}else{
+		return callback(data);
+	}
 };
 
 /* GET Account page */
@@ -105,7 +109,7 @@ exports.update = function(req, res){
 		jobs.push({
 			number: req.body.job_number[index],
 			date: today,
-			hours: req.body.hours[index],
+			hours: parseFloat(req.body.hours[index]),
 			description: req.body.description[index]
 		});
 	});
@@ -113,7 +117,7 @@ exports.update = function(req, res){
 	/** Asynchronously write  to the database **/
 	async.each(jobs, function(item, callback){
 		addJob( id, item , callback);
-	}, function(err){
+	}, function(){
 
 		/** Once done, retrieve new data and render the view **/
 		getJobs(id, today, function(results){
