@@ -1,7 +1,7 @@
 var cookie = require('scookie');
 
 /**
- * Setup Scookie
+ * Setup Scookie, let it last over an hour
  */
 cookie.init({
     name: 'user_data',
@@ -19,7 +19,6 @@ exports.index = function(req, res){
 /* POST to home page */
 exports.login = function(req, res){
 	var id = parseInt(req.body.employee_number);
-	console.log(req.body);
 
 	if (id) {
 		cookie.login({ employee_id: id }, res);

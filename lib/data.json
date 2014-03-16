@@ -95,6 +95,47 @@
       "job_number": "12",
       "description": "NON",
       "hours": 7.5
+    },
+    {
+      "date": "2014-03-16",
+      "assignee": 1,
+      "job_number": "873000",
+      "description": "Bob",
+      "hours": 7.3
+    },
+    {
+      "date": "2014-03-16",
+      "assignee": 1,
+      "job_number": "873000",
+      "description": "Bob",
+      "hours": 7.3
+    },
+    {
+      "date": "873000",
+      "assignee": 1,
+      "job_number": 1,
+      "description": "23",
+      "hours": 2014
+    },
+    {
+      "date": "2014-03-16",
+      "assignee": 1,
+      "description": "mon",
+      "hours": 3
+    },
+    {
+      "date": "2014-03-16",
+      "assignee": 1,
+      "job_number": "34",
+      "description": "nom",
+      "hours": 9
+    },
+    {
+      "date": "2014-03-16",
+      "assignee": 2,
+      "job_number": "873000",
+      "description": "mon",
+      "hours": 12
     }
   ]
 }

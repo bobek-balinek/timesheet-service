@@ -88,17 +88,21 @@ var calculateTax = function(sum, tax_rate){
 	return sum * tax_rate;
 };
 
+/** GET /payslips/view/:employee_id/:date **/
 exports.index = function(req, res){
 	var employee_id, date_from, date_to;
 
+	/** If date and employee's number is passed retrieve relevant data **/
 	if( req.params.employee_id && req.params.date ){
 
+		/** Assume the employee gets paid at the last day of the month **/
 		date_from = new moment(req.params.date, 'MM-YYYY').startOf('month');
 		date_to = new moment(req.params.date, 'MM-YYYY').endOf('month');
 		employee_id = parseInt(req.params.employee_id);
 
+		/** Generate a payslip data object, calculate gross, net total and tax values **/
 		generate(employee_id, date_from.format('YYYY-MM-DD'), date_to.format("YYYY-MM-DD") , function(payslip){
-		  // res.send(payslip);
+			/** render relevant view **/
 		  res.render('payslips', {user: payslip, string: JSON.stringify(payslip)});
 		});
 
