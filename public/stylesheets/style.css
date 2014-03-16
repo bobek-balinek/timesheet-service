@@ -6,3 +6,123 @@ body {
 a {
   color: #00B7FF;
 }
+
+small{
+	color: #8A8A8A;
+}
+
+h1{
+	line-height: 1.5em;
+	border-bottom: 1px solid #c0c0c0;
+}
+
+input[type="submit"]{
+	padding: 7px 10px;
+	background: transparent;
+	border: 1px solid #00B7FF;
+
+	border-radius: 5px;
+}
+
+.details dt{
+	font-weight: bold;
+}
+
+.payments{
+	border: 0;
+	width: 100%;
+}
+
+.payments thead{
+	background: #f0f0f0
+}
+
+.payments thead th{
+	border: 0;
+	text-align: left;
+	padding: 10px 5px;
+}
+
+.payments tbody td{
+	padding: 15px 5px;
+	border-bottom: 1px solid #f0f0f0;
+	border-right: 1px solid #f0f0f0;
+}
+
+.payments tbody td:last-child{
+	border-right: none;
+}
+
+.payments tfoot{
+	background: #D4D4D4;
+}
+
+.payments tfoot td{
+	padding: 25px 5px;
+}
+
+.payments .entitlements{
+	width: 45%;
+}
+
+.jobs{
+	width: 100%;
+}
+
+.jobs input[type="text"]{
+	width: 90%;
+}
+
+input[type="text"]{
+	padding: 7px 1%;
+	background: transparent;
+	border: 1px solid #10789E;
+
+	border-radius: 5px;
+}
+
+input[type="text"]:hover{
+	background-color: #C0E1ED;
+}
+
+.jobs tbody tr:nth-child(even){
+	background-color: #DEF4FC;
+
+}
+
+.jobs tbody td{
+	border-left: 1px solid #8BB5C4;
+}
+
+.jobs tbody td:first-child{
+	font-weight: bold;
+	border-left: none;
+}
+
+.jobs tbody td:last-child{
+	color: #6E6E6E;
+	font-style: italic;
+}
+
+.jobs .hours{
+	width: 15%;
+}
+
+.jobs .description{
+	width: 50%;
+}
+
+.jobs thead th{
+	color: #ffffff;
+	text-align: left;
+	background: #45A8CC;
+	border-bottom: 3px solid #1785AD;
+}
+
+.jobs th, td{
+	padding: 10px 5px;
+}
+
+.jobs tfoot{
+	text-align: right;
+}

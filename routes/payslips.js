@@ -25,10 +25,10 @@ var generate = function(employee_id, date_from, date_to, callback){
 
 		getUserJobs(employee_id, date_from, date_to, function(jobs){
 
-			payslip.total_hours = calculateTotalHours(jobs);
-			payslip.gross_total = calculateGrossTotal(payslip.total_hours, user.hourly_rate);
-			payslip.net_total = calculateNetTotal(payslip.gross_total, user.tax_rate);
-			payslip.tax_total = calculateTax(payslip.gross_total, user.tax_rate);
+			payslip.total_hours = roundedToFixed(calculateTotalHours(jobs), 2);
+			payslip.gross_total = roundedToFixed(calculateGrossTotal(payslip.total_hours, user.hourly_rate), 2);
+			payslip.net_total = roundedToFixed(calculateNetTotal(payslip.gross_total, user.tax_rate), 2);
+			payslip.tax_total = roundedToFixed(calculateTax(payslip.gross_total, user.tax_rate), 2);
 
 			_.extend(payslip, user);
 
@@ -88,22 +88,29 @@ var calculateTax = function(sum, tax_rate){
 	return sum * tax_rate;
 };
 
+function roundedToFixed(_float, _digits){
+  var rounder = Math.pow(10, _digits);
+  return (Math.round(_float * rounder) / rounder).toFixed(_digits);
+}
+
 /** GET /payslips/view/:employee_id/:date **/
 exports.index = function(req, res){
-	var employee_id, date_from, date_to;
+	var employee_id, date_from, date_to, pretty_date;
 
 	/** If date and employee's number is passed retrieve relevant data **/
 	if( req.params.employee_id && req.params.date ){
 
-		/** Assume the employee gets paid at the last day of the month **/
+		/** Assume the employee gets paid at the first day of each month **/
 		date_from = new moment(req.params.date, 'MM-YYYY').startOf('month');
 		date_to = new moment(req.params.date, 'MM-YYYY').endOf('month');
 		employee_id = parseInt(req.params.employee_id);
 
+		pretty_date = new moment(req.params.date, 'MM-YYYY').format('MMMM YYYY');
+
 		/** Generate a payslip data object, calculate gross, net total and tax values **/
 		generate(employee_id, date_from.format('YYYY-MM-DD'), date_to.format("YYYY-MM-DD") , function(payslip){
 			/** render relevant view **/
-		  res.render('payslips', {user: payslip, string: JSON.stringify(payslip)});
+		  res.render('payslips', {user: payslip, date_from: date_from.format('DD-MM-YYYY'), date_to: date_to.format('DD-MM-YYYY'), full_date: pretty_date });
 		});
 
 	}else{
