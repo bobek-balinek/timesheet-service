@@ -1,5 +1,10 @@
 <h1>Today's list <small>{{date}}</small></h1>
 
+<div class="actions">
+<a class="previous-day" href="/account?date={{previous_date}}">Previous date</a>
+<a class="next-day" href="/account?date={{next_date}}">Next date</a>
+</div>
+
 <form action="/account?date={{date}}" method="POST">
 	<input type="hidden" name="date" value="{{date}}">
 	<table class="jobs" border="0" cellpadding="0" cellspacing="0">

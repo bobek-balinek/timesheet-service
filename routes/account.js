@@ -85,8 +85,16 @@ exports.index = function(req, res){
 		today = req.query.date;
 	}
 
+	var next_date = new moment(today).add('days', 1).format("YYYY-MM-DD");
+	var previous_date = new moment(today).subtract('days', 1).format("YYYY-MM-DD");
+
 	getJobs( id, today, function(results){
-	  res.render('account', { jobs: results, date: today });
+	  res.render('account', {
+	  	jobs: results,
+	  	date: today,
+	  	previous_date: previous_date,
+	  	next_date: next_date
+	  });
 	});
 };
 
@@ -102,6 +110,9 @@ exports.update = function(req, res){
 	if( req.body.date != undefined && moment(req.body.date, 'YYYY-MM-DD').isValid() ){
 		today = req.body.date;
 	}
+	var next_date = new moment(today).add('days', 1).format("YYYY-MM-DD");
+	var previous_date = new moment(today).subtract('days', 1).format("YYYY-MM-DD");
+
 
 	/** Get all parameters from the form into a single collection **/
 	var jobs = [];
@@ -121,7 +132,12 @@ exports.update = function(req, res){
 
 		/** Once done, retrieve new data and render the view **/
 		getJobs(id, today, function(results){
-		  res.render('account', { jobs: results, date: today });
+		  res.render('account', {
+		  	jobs: results,
+		  	date: today,
+		  	previous_date: previous_date,
+		  	next_date: next_date
+		  });
 		});
 	});
 };
