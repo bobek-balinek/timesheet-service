@@ -1,0 +1,56 @@
+<h1>Pay Slip <small>{{full_date}}</small></h1>
+
+<dl class="details">
+	<dt>Details:</dt>
+	<dd>{{user.name}} <br>
+			<br>
+			{{user.address_line1}} <br>
+			{{user.address_line2}} <br>
+			{{user.address_line3}} <br>
+			{{user.postcode}}
+	</dd>
+
+
+	<dt>National Insurance number:</dt>
+	<dd>{{user.national_insurance}}</dd>
+
+	<dt>Hourly rate:</dt>
+	<dd>&pound;{{user.hourly_rate}}</dd>
+
+	<dt>Pay period:</dt>
+	<dd>{{date_from}} - {{date_to}}</dd>
+</dl>
+
+<table class="payments" border="0" cellpadding="0" cellspacing="0">
+	<thead>
+		<tr>
+			<th class="entitlements">Entitlements</th>
+			<th class="unit">Unit</th>
+			<th class="rate">Rate</th>
+			<th class="total">Total</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>Wages for ordinary hours worked</td>
+			<td>{{user.total_hours}}</td>
+			<td>{{user.hourly_rate}}</td>
+			<td>{{user.gross_total}}</td>
+		</tr>
+
+		<tr>
+			<td>Taxes (Tax code: {{user.tax_code}} )</td>
+			<td>{{user.total_hours}}</td>
+			<td>{{user.tax_rate}}</td>
+			<td>-{{user.tax_total}}</td>
+		</tr>
+	</tbody>
+	<tfoot>
+		<tr>
+			<td>&nbsp;</td>
+			<td></td>
+			<td>Total</td>
+			<td>&pound;{{user.net_total}}</td>
+		</tr>
+	</tfoot>
+</table>

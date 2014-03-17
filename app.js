@@ -35,8 +35,8 @@ app.post('/login', main.login);
 app.get('/account',scookie.middleware.mustBeLoggedIn,  account.index);
 app.post('/account', scookie.middleware.mustBeLoggedIn, account.update);
 
-// app.get('/payslips', payslips.index);
-app.get('/payslips/view/:employee_id/:date', payslips.index); // View particular payslip
+app.get('/payslips', payslips.index);
+app.get('/payslips/view/:employee_id/:date', payslips.view); // View particular payslip
 
 /// catch 404 and forwarding to error handler
 app.use(function(req, res, next) {

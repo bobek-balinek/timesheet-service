@@ -92,6 +92,20 @@
       "job_number": "8787",
       "description": "Flash banner",
       "hours": 2.5
+    },
+    {
+      "date": "2014-03-16",
+      "assignee": 8,
+      "job_number": "8787",
+      "description": "Flash banner",
+      "hours": 2.5
+    },
+    {
+      "date": "2014-03-16",
+      "assignee": 8,
+      "job_number": "8787",
+      "description": "Flash banner",
+      "hours": 2.5
     }
   ]
 }
