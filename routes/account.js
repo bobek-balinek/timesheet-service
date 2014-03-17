@@ -1,79 +1,8 @@
 var _ = require('underscore');
 var moment = require('moment');
-var sampleData = require('../lib/data.json');
-var db = require('../lib/storage');
 var async = require('async');
 var scookie = require('scookie');
-
-/**
- * Fetch jobs from the database, if date given, filter by 'dd-mm-yyyy'
- */
-var getJobs = function(employee, date, callback){
-	return db.get('jobs', function(res){
-		var results = res;
-
-		if(date){
-			results = _.filter(results, function(item, index){
-				return item.date === date && item.assignee === employee;
-			});
-		}
-
-		callback(results);
-	});
-};
-
-/**
- * Find a job object by its job number
- */
-var findJob = function(employee, number, date, callback){
-	getJobs(employee, date, function(obj){
-		var results = _.find(obj, function(item, index){
-			return (item.job_number === number) && (item.date == date);
-		});
-
-		callback(results);
-	})
-};
-
-/**
- * Find an index in jobs array by given job number
- */
-var findJobIntex = function(number, date){
-	var job_index;
-
-	_.find(jobs, function(item, index){
-
-		if(item.job_number === number && item.date == date){
-			job_index = index;
-			return item;
-		}
-
-		return false;
-	});
-
-	return job_index;
-};
-
-/**
- * Add a new job entry to an array of today's timesheet
- */
-var addJob = function(assignee_id, data, callback){
-	var data = {
-		"date": data.date,
-		"assignee": parseInt(assignee_id),
-		"job_number": data.number,
-		"description": data.description,
-		"hours": parseFloat(data.hours)
-	};
-
-	if(data.job_number && data.assignee && data.date && data.hours){
-		return db.insert('jobs', data, function(){
-			callback(data);
-		});
-	}else{
-		return callback(data);
-	}
-};
+var timesheets = require('../lib/timesheet');
 
 /* GET Account page */
 exports.index = function(req, res){
@@ -88,7 +17,7 @@ exports.index = function(req, res){
 	var next_date = new moment(today).add('days', 1).format("YYYY-MM-DD");
 	var previous_date = new moment(today).subtract('days', 1).format("YYYY-MM-DD");
 
-	getJobs( id, today, function(results){
+	timesheets.getJobs( id, today, function(results){
 	  res.render('account', {
 	  	jobs: results,
 	  	date: today,
@@ -127,11 +56,11 @@ exports.update = function(req, res){
 
 	/** Asynchronously write  to the database **/
 	async.each(jobs, function(item, callback){
-		addJob( id, item , callback);
+		timesheets.addJob( id, item , callback);
 	}, function(){
 
 		/** Once done, retrieve new data and render the view **/
-		getJobs(id, today, function(results){
+		timesheets.getJobs(id, today, function(results){
 		  res.render('account', {
 		  	jobs: results,
 		  	date: today,
