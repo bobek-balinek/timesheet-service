@@ -5,6 +5,13 @@ var scookie = require('scookie');
 var timesheets = require('../lib/timesheet');
 
 /* GET Account page */
+
+/**
+ * The index page should list our a number of jobs logged for a particular day
+ *
+ * If no Date parameter is passed in, use today's date.
+ */
+
 exports.index = function(req, res){
 	var cookie = scookie.getCookie(req);
 	var id = parseInt(cookie.employee_id);
